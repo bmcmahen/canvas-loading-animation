@@ -34,8 +34,7 @@ var Spinner = function(attributes){
 Spinner.prototype.build = function(){
   this.children = [];
   for (var i = 0, x = this.number; i < x; i++) {
-    var dot = new LoadingDot(i);
-    this.children.push(dot);
+    this.children.push(new LoadingDot(i));
   }
   return this; 
 }
@@ -53,13 +52,13 @@ Spinner.prototype.draw = function(){
 
   function animate() {
     window.requestAnimationFrame(animate);
-    ctx.clearRect(width * -1, height * -1, width * 2, height * 2);
+    ctx.clearRect(-width, -height, width * 2, height * 2);
     ctx.save();
 
     for ( var x = 0, l = self.children.length; x < l; x++ ) {
       var dot = self.children[x];
       ctx.fillStyle = 'rgba('+self.color+','+dot.opacity / 100+')';
-      ctx.rotate(Math.PI * 2 / self.number);
+      ctx.rotate(-Math.PI * 2 / self.number);
       ctx.beginPath();
       ctx.arc(0, self.radius, self.dotRadius, 0, Math.PI * 2, true );
       ctx.fill();
