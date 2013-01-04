@@ -22,7 +22,8 @@
 
    var wrapper = document.getElementById('myspinner');
    wrapper.appendChild(loading.canvas);
-
+   ```
+   
 ## License
 
   MIT
