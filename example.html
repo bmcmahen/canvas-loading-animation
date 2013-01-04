@@ -17,11 +17,13 @@
 
 <script>
 
-var spinner = require('canvas_loading_animation/index.js')
+var spinner = require('canvas-loading-animation/index.js')
 console.log(spinner);
 
 var loading = spinner({
-  color: '130, 170, 60'
+  color: '130, 170, 60',
+  width: 50,
+  height: 50
 });
  
 var body = document.getElementsByTagName('body')[0];

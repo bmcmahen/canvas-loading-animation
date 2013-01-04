@@ -17,6 +17,10 @@ var Spinner = function(attributes){
   this.ctx = this.canvas.getContext('2d');
   this.width = attributes.width || 100;
   this.height = attributes.height || 100; 
+
+  this.canvas.width = this.width; 
+  this.canvas.height = this.height; 
+
   this.color = attributes.color || '1, 1, 1'; 
   this.maxOpacity = (attributes.maxOpacity || 0.7) * 100;
   this.minOpacity = (attributes.minOpacity || 0.1) * 100; 
@@ -39,14 +43,17 @@ Spinner.prototype.build = function(){
 // Draw function (Should make this pluggable, so that other drawing logic could 
 // be used for different shapes, styles, etc.)
 Spinner.prototype.draw = function(){
-  var ctx = this.ctx; 
-  ctx.translate(50, 50);
+  var ctx = this.ctx
+    , height = this.height / 2
+    , width = this.width / 2;
+
+  ctx.translate(width, height);
 
   var self = this; 
 
   function animate() {
     window.requestAnimationFrame(animate);
-    ctx.clearRect(-50, -50, 100, 100);
+    ctx.clearRect(width * -1, height * -1, width * 2, height * 2);
     ctx.save();
 
     for ( var x = 0, l = self.children.length; x < l; x++ ) {
