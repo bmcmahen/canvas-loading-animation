@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title></title>
+
+  <style>
+#black {
+  background: black;
+}
+
+  </style>
+</head>
+<body>
+
+<div id='black'></div>
+
+<script src='build/build.js'></script>
+
+<script>
+
+var spinner = require('canvas_loading_animation/index.js')
+console.log(spinner);
+
+var loading = spinner({
+  color: '130, 170, 60'
+});
+ 
+var body = document.getElementsByTagName('body')[0];
+body.appendChild(loading.canvas);
+
+ console.log(loading.canvas);
+
+</script>
+</body>
+</html>
