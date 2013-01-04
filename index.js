@@ -58,14 +58,14 @@ Spinner.prototype.draw = function(){
     for ( var x = 0, l = self.children.length; x < l; x++ ) {
       var dot = self.children[x];
       ctx.fillStyle = 'rgba('+self.color+','+dot.opacity / 100+')';
-      ctx.rotate(-Math.PI * 2 / self.number);
+      ctx.rotate(Math.PI * 2 / self.number);
       ctx.beginPath();
       ctx.arc(0, self.radius, self.dotRadius, 0, Math.PI * 2, true );
       ctx.fill();
 
-      dot.opacity += self.speed;
-      if (dot.opacity > self.maxOpacity)
-        dot.opacity = self.minOpacity; 
+      dot.opacity -= self.speed;
+      if (dot.opacity < self.minOpacity)
+        dot.opacity = self.maxOpacity; 
     }
   }
 
